@@ -101,9 +101,24 @@ npm start
 
 ## Usage
 
+### Demo Mode (No LinkedIn Account Required!)
+
+**Try the app without real credentials:**
+
+1. Open http://localhost:3000
+2. Use these demo credentials:
+   - **Email**: `demo@example.com`
+   - **Password**: `demo123`
+3. Fill in any role/location you want to test
+4. Click "Search LinkedIn Posts"
+5. You'll see mock hiring posts to test the UI!
+
+### Real LinkedIn Scraping
+
 1. Open http://localhost:3000 in your browser
 2. Enter your LinkedIn credentials (used only for this session, not stored)
-3. Fill in search parameters:
+3. **Important**: Disable 2FA on your LinkedIn account first
+4. Fill in search parameters:
    - **Job Role**: e.g., "Data Analyst", "Software Engineer"
    - **Location**: e.g., "Bangalore", "London", "Remote"
    - **Time Range**: "Last 24 hours", "Last Week", or "Last Month"
