@@ -59,6 +59,72 @@ router.post('/', async (req, res) => {
       });
     }
 
+    // DEMO MODE: Return mock data for testing
+    if (email === 'demo@example.com' && password === 'demo123') {
+      console.log('Demo mode activated - returning mock data');
+      const mockResults = [
+        {
+          id: 'demo-post-1',
+          posterName: 'Sarah Johnson',
+          posterTitle: 'Senior Recruiter at TechCorp',
+          jobTitle: role,
+          location: location,
+          datePosted: new Date().toISOString(),
+          hiringIntent: `We're hiring a ${role}! 3+ years experience required. Join our amazing team. Apply now!`,
+          postUrl: 'https://www.linkedin.com/posts/demo-1'
+        },
+        {
+          id: 'demo-post-2',
+          posterName: 'Michael Chen',
+          posterTitle: 'HR Manager at DataTech Solutions',
+          jobTitle: role,
+          location: location,
+          datePosted: new Date(Date.now() - 86400000).toISOString(),
+          hiringIntent: `Looking for a talented ${role} to join our team in ${location}. Great benefits and growth opportunities!`,
+          postUrl: 'https://www.linkedin.com/posts/demo-2'
+        },
+        {
+          id: 'demo-post-3',
+          posterName: 'Emily Rodriguez',
+          posterTitle: 'Talent Acquisition Lead at InnovateCo',
+          jobTitle: role,
+          location: location,
+          datePosted: new Date(Date.now() - 172800000).toISOString(),
+          hiringIntent: `Exciting opportunity! We're hiring for ${role} position. Remote work available. DM me to apply!`,
+          postUrl: 'https://www.linkedin.com/posts/demo-3'
+        },
+        {
+          id: 'demo-post-4',
+          posterName: 'David Park',
+          posterTitle: 'Founder & CEO at StartupXYZ',
+          jobTitle: role,
+          location: location,
+          datePosted: new Date(Date.now() - 259200000).toISOString(),
+          hiringIntent: `Join our team! ${role} needed urgently. Competitive salary and equity. Apply today!`,
+          postUrl: 'https://www.linkedin.com/posts/demo-4'
+        },
+        {
+          id: 'demo-post-5',
+          posterName: 'Lisa Thompson',
+          posterTitle: 'Head of People Operations at CloudTech',
+          jobTitle: role,
+          location: location,
+          datePosted: new Date(Date.now() - 345600000).toISOString(),
+          hiringIntent: `We're expanding! Looking for experienced ${role} professionals. Great company culture. Apply now!`,
+          postUrl: 'https://www.linkedin.com/posts/demo-5'
+        }
+      ];
+
+      // Return only the requested number of results
+      const limitedResults = mockResults.slice(0, Math.min(maxResults, mockResults.length));
+
+      return res.status(200).json({
+        success: true,
+        count: limitedResults.length,
+        results: limitedResults
+      });
+    }
+
     // Get browser instance
     const browser = req.app.locals.getBrowser();
     if (!browser) {
