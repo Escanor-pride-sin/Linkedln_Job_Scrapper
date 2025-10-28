@@ -1,0 +1,15 @@
+{
+  "name": "linkedln-job-scrapper",
+  "version": "1.0.0",
+  "description": "LinkedIn job post scraper - finds hiring posts by role and location",
+  "scripts": {
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "start-backend": "cd backend && npm start",
+    "start-frontend": "cd frontend && npm start",
+    "dev-backend": "cd backend && npm run dev",
+    "dev": "concurrently \"npm run dev-backend\" \"npm run start-frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
