@@ -1,0 +1,20 @@
+{
+  "name": "linkedin-job-scraper-backend",
+  "version": "1.0.0",
+  "description": "Backend API for LinkedIn job post scraper",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "puppeteer": "^21.5.0",
+    "exceljs": "^4.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
