@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from './components/shared/Layout';
 import { Dashboard } from './components/Dashboard/Dashboard';
@@ -6,28 +6,26 @@ import { VoiceExpenseInput } from './components/VoiceExpenseInput/VoiceExpenseIn
 import { ExpenseList } from './components/Expenses/ExpenseList';
 import { Settings } from './components/Settings/Settings';
 import { ExpenseProvider } from './context/ExpenseContext';
-import { Toast } from './components/shared/Toast';
-import { useToast } from './hooks/useToast';
+import { ToastContainer } from './components/shared/ToastContainer';
+import { ExpenseProviderWithToast } from './context/ExpenseProviderWithToast';
 
 function App() {
-  const { toast, showToast, hideToast } = useToast();
-
   return (
-    <ExpenseProvider>
+    <ExpenseProviderWithToast>
       <div className="min-h-screen bg-gray-50">
         <Layout>
           <Routes>
             <Route
               path="/"
-              element={<Dashboard showToast={showToast} />}
+              element={<Dashboard />}
             />
             <Route
               path="/add"
-              element={<VoiceExpenseInput showToast={showToast} />}
+              element={<VoiceExpenseInput />}
             />
             <Route
               path="/expenses"
-              element={<ExpenseList showToast={showToast} />}
+              element={<ExpenseList />}
             />
             <Route
               path="/settings"
@@ -37,15 +35,9 @@ function App() {
         </Layout>
 
         {/* Toast Notifications */}
-        {toast && (
-          <Toast
-            message={toast.message}
-            type={toast.type}
-            onClose={hideToast}
-          />
-        )}
+        <ToastContainer />
       </div>
-    </ExpenseProvider>
+    </ExpenseProviderWithToast>
   );
 }
 
